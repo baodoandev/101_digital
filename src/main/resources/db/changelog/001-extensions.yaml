@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-extensions
+      author: coffee
+      changes:
+        - sql:
+            sql: CREATE EXTENSION IF NOT EXISTS postgis;

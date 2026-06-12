@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include: { file: db/changelog/001-extensions.yaml }
+  - include: { file: db/changelog/002-users.yaml }
+  - include: { file: db/changelog/003-shop.yaml }
+  - include: { file: db/changelog/004-menu.yaml }
+  - include: { file: db/changelog/005-queue.yaml }
+  - include: { file: db/changelog/006-customer.yaml }
+  - include: { file: db/changelog/007-orders.yaml }
+  - include: { file: db/changelog/008-queue-entry.yaml }
+  - include: { file: db/changelog/100-seed-data.yaml }
