@@ -7,8 +7,8 @@ databaseChangeLog:
         - sql:
             sql: |
               INSERT INTO app_user (id, email, password_hash, display_name, role) VALUES
-                (1,'owner@chain.com','$2a$10$EblZqNptyYvcLm/VwDCVAuBjzZOI7khzdyGPBr08PpIi0na624b8.','Demo Owner','OWNER'),
-                (2,'operator@chain.com','$2a$10$EblZqNptyYvcLm/VwDCVAuBjzZOI7khzdyGPBr08PpIi0na624b8.','Demo Operator','OPERATOR');
+                (1,'owner@chain.com','$2a$10$sx6frS5Fi9xj3qlOQT6rdOHP.NVWJhULzG35pyJDCmrjDKDy8E5Au','Demo Owner','OWNER'),
+                (2,'operator@chain.com','$2a$10$sx6frS5Fi9xj3qlOQT6rdOHP.NVWJhULzG35pyJDCmrjDKDy8E5Au','Demo Operator','OPERATOR');
               INSERT INTO shop (id, owner_id, name, contact_phone, contact_email, address_line, city, country,
                                 latitude, longitude, timezone, currency, opening_time, closing_time, avg_service_seconds) VALUES
                 (1,1,'Chain Coffee - Raffles','+6561234567','raffles@chain.com','1 Raffles Place','Singapore','SG',
