@@ -2,31 +2,14 @@ package com.coffee.platform;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
-import org.testcontainers.containers.PostgreSQLContainer;
-import org.testcontainers.utility.DockerImageName;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest(properties = "spring.liquibase.contexts=test")
-class ApplicationBootIT {
+class ApplicationBootIT extends AbstractIT {
 
-    static final PostgreSQLContainer<?> DB = new PostgreSQLContainer<>(
-            DockerImageName.parse("postgis/postgis:16-3.4").asCompatibleSubstituteFor("postgres"));
-
-    static { DB.start(); }
-
-    @DynamicPropertySource
-    static void props(DynamicPropertyRegistry r) {
-        r.add("spring.datasource.url", DB::getJdbcUrl);
-        r.add("spring.datasource.username", DB::getUsername);
-        r.add("spring.datasource.password", DB::getPassword);
-    }
-
-    @Autowired JdbcTemplate jdbc;
+    @Autowired
+    JdbcTemplate jdbc;
 
     @Test
     void schemaIsCreatedAndSeedIsExcludedInTestContext() {
