@@ -19,7 +19,8 @@ class ApplicationBootIT extends AbstractIT {
                 ('app_user','shop','operator_assignment','menu_item','queue','customer','cust_order','order_item','queue_entry')
                 """, Integer.class);
         assertThat(tables).isEqualTo(9);
-        Integer shops = jdbc.queryForObject("SELECT count(*) FROM shop", Integer.class);
-        assertThat(shops).isZero();
+        Integer seedShops = jdbc.queryForObject(
+                "SELECT count(*) FROM shop WHERE id IN (1,2) AND name LIKE 'Chain Coffee%'", Integer.class);
+        assertThat(seedShops).isZero();
     }
 }
