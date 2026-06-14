@@ -76,6 +76,8 @@ public class Customer {
 
     public OffsetDateTime getUpdatedAt() { return updatedAt; }
 
+    public void setName(String name) { this.name = name; }
+
     public void setAddressLabel(String addressLabel) { this.addressLabel = addressLabel; }
 
     public void setAddressLine(String addressLine) { this.addressLine = addressLine; }

@@ -54,10 +54,24 @@ public class AuthService {
             throw new ConflictException("MOBILE_TAKEN", "Mobile number already registered");
         }
         Customer c = new Customer(req.mobileNumber(), req.name());
+        if (req.addressLabel() != null) c.setAddressLabel(req.addressLabel());
+        if (req.addressLine() != null) c.setAddressLine(req.addressLine());
         c = customerRepo.save(c);
         String token = jwtService.generateToken(
                 c.getId(), c.getMobileNumber(), PrincipalType.CUSTOMER, "CUSTOMER");
         return new AuthResponse(token, "CUSTOMER", c.getId());
+    }
+
+    @Transactional
+    public AuthResponse registerOperator(RegisterOperatorRequest req) {
+        if (userRepo.existsByEmail(req.email())) {
+            throw new ConflictException("EMAIL_TAKEN", "Email already registered");
+        }
+        AppUser user = new AppUser(req.email(), encoder.encode(req.password()), req.displayName(), Role.OPERATOR);
+        user = userRepo.save(user);
+        String token = jwtService.generateToken(
+                user.getId(), user.getEmail(), PrincipalType.USER, user.getRole().name());
+        return new AuthResponse(token, "USER", user.getId());
     }
 
     public AuthResponse loginCustomer(CustomerLoginRequest req) {

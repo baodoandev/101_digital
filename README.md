@@ -52,8 +52,9 @@ All endpoints are under `/api/v1`. Swagger UI available at `/swagger-ui.html`.
 | Method | Path | Auth | Description |
 |--------|------|------|-------------|
 | POST | `/api/v1/auth/owner/register` | - | Register shop owner |
+| POST | `/api/v1/auth/operator/register` | - | Register operator |
 | POST | `/api/v1/auth/login` | - | Login (owner/operator) |
-| POST | `/api/v1/auth/customer/register` | - | Register customer |
+| POST | `/api/v1/auth/customer/register` | - | Register customer (with optional address) |
 | POST | `/api/v1/auth/customer/login` | - | Customer login via OTP |
 | GET | `/api/v1/auth/me` | Bearer | Get current identity |
 
@@ -79,6 +80,8 @@ All endpoints are under `/api/v1`. Swagger UI available at `/swagger-ui.html`.
 | GET | `/api/v1/orders/{id}` | Bearer | Get order details |
 | GET | `/api/v1/orders/{id}/queue-position` | Customer | Check queue position + ETA |
 | DELETE | `/api/v1/orders/{id}` | Customer | Cancel order |
+| GET | `/api/v1/customers/me` | Customer | Get profile |
+| PATCH | `/api/v1/customers/me` | Customer | Update profile (name, address) |
 | GET | `/api/v1/customers/me/orders` | Customer | Order history |
 
 ### Queue Operations
@@ -96,6 +99,16 @@ All endpoints are under `/api/v1`. Swagger UI available at `/swagger-ui.html`.
 |--------|------|------|-------------|
 | GET | `/actuator/health` | - | Health check |
 | GET | `/swagger-ui.html` | - | API documentation |
+
+## Design Documentation
+
+Full Part 1 design documents are in the [`docs/`](docs/) directory:
+
+- [Solution Design](docs/01-solution-design.md) — use cases, domain model, sequence diagrams, ER diagram, data flows
+- [Standards](docs/02-standards.md) — coding, naming, security, and technology standards
+- [API Specification](docs/03-api-specification.md) — detailed endpoint reference with request/response schemas
+- [Security Solution](docs/04-security.md) — authentication architecture, authorization model, production hardening
+- [Test Strategy](docs/05-test-strategy.md) — how to test without a frontend, requirements traceability
 
 ## Tech Stack
 

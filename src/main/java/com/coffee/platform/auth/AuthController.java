@@ -27,6 +27,12 @@ public class AuthController {
         return authService.login(req);
     }
 
+    @PostMapping("/operator/register")
+    @ResponseStatus(HttpStatus.CREATED)
+    public AuthResponse registerOperator(@Valid @RequestBody RegisterOperatorRequest req) {
+        return authService.registerOperator(req);
+    }
+
     @PostMapping("/customer/register")
     @ResponseStatus(HttpStatus.CREATED)
     public AuthResponse registerCustomer(@Valid @RequestBody RegisterCustomerRequest req) {
